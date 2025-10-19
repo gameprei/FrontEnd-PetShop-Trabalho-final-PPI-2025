@@ -1,11 +1,13 @@
 {
   "name": "frontend-petshop-trabalho-final-ppi-2025",
   "version": "1.0.0",
+  "type": "module",
   "description": "Front end Pet shop Trabalho Final PPI 2025 FIPP",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
   },
   "homepage": "https://github.com/gameprei/FrontEnd-PetShop-Trabalho-final-PPI-2025#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "express-session": "^1.18.2"
   }
 }
