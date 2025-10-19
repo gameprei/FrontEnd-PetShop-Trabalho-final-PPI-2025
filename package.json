@@ -1,0 +1,32 @@
+{
+  "name": "frontend-petshop-trabalho-final-ppi-2025",
+  "version": "1.0.0",
+  "description": "Front end Pet shop Trabalho Final PPI 2025 FIPP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gameprei/FrontEnd-PetShop-Trabalho-final-PPI-2025.git"
+  },
+  "keywords": [
+    "FrontEnd",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Nodejs",
+    "GIT",
+    "GitHub"
+  ],
+  "author": "Luiz Henrique Garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gameprei/FrontEnd-PetShop-Trabalho-final-PPI-2025/issues"
+  },
+  "homepage": "https://github.com/gameprei/FrontEnd-PetShop-Trabalho-final-PPI-2025#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
