@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Shop - Filhotes</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🐾 Pet Shop</h1>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="gerenciarinteressado.html" class="nav-link">Interessados</a></li>
+                    <li><a href="gerenciarfilhote.html" class="nav-link active">Filhotes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="page-header">
+                <h1>Cadastro de Filhotes</h1>
+                <p>Gerencie os filhotes disponíveis para adoção</p>
+            </div>
+
+            <div class="content-grid">
+                <!-- Formulário de Cadastro -->
+                <div class="form-section">
+                    <div class="form-card">
+                        <h3>Novo Filhote</h3>
+                        <form id="formFilhote" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="especie" class="form-label">Espécie *</label>
+                                <select class="form-select" id="especie" name="especie" required>
+                                    <option value="">Selecione a espécie</option>
+                                    <option value="Cachorro">Cachorro</option>
+                                    <option value="Gato">Gato</option>
+                                    <option value="Pássaro">Pássaro</option>
+                                    <option value="Coelho">Coelho</option>
+                                    <option value="Hamster">Hamster</option>
+                                    <option value="Outro">Outro</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Por favor, selecione a espécie do filhote.
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="raca" class="form-label">Raça *</label>
+                                <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    id="raca" 
+                                    name="raca"
+                                    placeholder="Digite a raça do filhote"
+                                    required
+                                    minlength="2"
+                                >
+                                <div class="invalid-feedback">
+                                    Por favor, informe a raça do filhote (mínimo 2 caracteres).
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="id_interessado" class="form-label">Interessado (Opcional)</label>
+                                <select class="form-select" id="id_interessado" name="id_interessado">
+                                    <option value="">Nenhum interessado vinculado</option>
+                                    <!-- Opções serão carregadas dinamicamente -->
+                                </select>
+                                <div class="form-text">
+                                    Vincule este filhote a um interessado da lista de espera
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    Cadastrar Filhote
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary" onclick="limparFormulario()">
+                                    Limpar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Lista de Filhotes -->
+                <div class="list-section">
+                    <div class="list-card">
+                        <div class="list-header">
+                            <h3>Filhotes Cadastrados</h3>
+                            <span class="badge bg-primary" id="totalFilhotes">0</span>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table class="table" id="tabelaFilhotes">
+                                <thead>
+                                    <tr>
+                                        <th>Espécie</th>
+                                        <th>Raça</th>
+                                        <th>Interessado</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbodyFilhotes">
+                                    <!-- Dados serão carregados via JavaScript -->
+                                    <tr>
+                                        <td colspan="4" class="text-center text-muted">
+                                            Nenhum filhote cadastrado
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Edição -->
+    <div class="modal fade" id="modalEdicaoFilhote" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Filhote</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formEdicaoFilhote">
+                        <input type="hidden" id="editIdFilhote">
+                        <div class="mb-3">
+                            <label for="editEspecie" class="form-label">Espécie</label>
+                            <select class="form-select" id="editEspecie" required>
+                                <option value="">Selecione a espécie</option>
+                                <option value="Cachorro">Cachorro</option>
+                                <option value="Gato">Gato</option>
+                                <option value="Pássaro">Pássaro</option>
+                                <option value="Coelho">Coelho</option>
+                                <option value="Hamster">Hamster</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editRaca" class="form-label">Raça</label>
+                            <input type="text" class="form-control" id="editRaca" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editInteressado" class="form-label">Interessado</label>
+                            <select class="form-select" id="editInteressado">
+                                <option value="">Nenhum interessado</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="salvarEdicaoFilhote()">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Associação -->
+    <div class="modal fade" id="modalAssociacao" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Associar Interessado</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formAssociacao">
+                        <input type="hidden" id="associarFilhoteId">
+                        <div class="mb-3">
+                            <label for="associarInteressado" class="form-label">Selecionar Interessado</label>
+                            <select class="form-select" id="associarInteressado">
+                                <option value="">Remover associação</option>
+                            </select>
+                            <div class="form-text">
+                                Selecione um interessado para vincular a este filhote
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="confirmarAssociacao()">Associar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Pet Shop - Sistema de Adoção. Trabalho Final PPI.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

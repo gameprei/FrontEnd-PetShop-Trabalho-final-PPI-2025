@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Shop - Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🐾 Pet Shop</h1>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="login.html" class="nav-link active">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="login-container">
+                <div class="login-card">
+                    <div class="login-header">
+                        <h2>Acesso ao Sistema</h2>
+                        <p>Entre com suas credenciais para acessar o sistema</p>
+                    </div>
+                    
+                    <form class="login-form" id="loginForm" action="/login" method="post">
+                        <div class="form-group">
+                            <label for="usuario" class="form-label">Usuário</label>
+                            <input 
+                                type="text" 
+                                id="usuario" 
+                                name="usuario" 
+                                class="form-input"
+                                placeholder="Digite seu usuário"
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="senha" class="form-label">Senha</label>
+                            <input 
+                                type="password" 
+                                id="senha" 
+                                name="senha" 
+                                class="form-input"
+                                placeholder="Digite sua senha"
+                                required
+                            >
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Entrar
+                        </button>
+                    </form>
+                    
+                    <div class="login-footer">
+                        <p>Sistema de Gerenciamento Pet Shop</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Pet Shop - Sistema de Adoção. Trabalho Final PPI.</p>
+        </div>
+    </footer>
+</body>
+</html>
